@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 
 class TaskFactory extends Factory
@@ -17,7 +18,7 @@ class TaskFactory extends Factory
             'status'=>fake()->randomElement(Task::STATUS_LIST),
             'project_id'=>Project::factory(),
             'assigned_to'=>User::factory(),
-            'due_date'=>fake()->date('Y-m-d', 'now +1 year'),
+            'due_date'=>Carbon::now()->addDays(rand(1, 365))->format('Y-m-d'),
         ];
     }
 }
