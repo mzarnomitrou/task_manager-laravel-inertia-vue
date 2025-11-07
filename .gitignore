@@ -1,0 +1,45 @@
+# Laravel and environment files
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+
+# Docker files (if using Docker)
+.docker/
+docker-data/ 
+*.log     
+
+# IDE and Editor directories
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# Authentication and config files
+/auth.json
+Homestead.json
+Homestead.yaml
+
+# Node and Composer dependencies
+/node_modules
+/vendor
+
+# Laravel public and storage files
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+
+# Laravel framework cache
+/storage/framework/cache/
+.storage/framework/sessions/
+
+# OS files
+Thumbs.db
+
+# Other
+.phpunit.cache
