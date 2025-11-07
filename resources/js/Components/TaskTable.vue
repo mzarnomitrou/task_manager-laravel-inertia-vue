@@ -61,7 +61,8 @@
     
     <Pagination 
         :meta="meta" 
-        routeName="projects.show"  />
+        routeName="projects.show"  
+        />
 
 
   </div>

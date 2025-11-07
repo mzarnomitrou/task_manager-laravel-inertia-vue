@@ -22,15 +22,21 @@
 export default {
   props: {
     meta: Object, 
-    routeName: String, 
-    additionalParams: Object
+    routeName: String,
+    routeParams: {
+      type: Object,
+      default: () => ({}),
+    },
+    additionalParams: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   methods: {
     goToPage(page) {
       if (page > 0 && page <= this.meta.last_page) {
-        this.$inertia.get(this.route(routeName), {
-          page,
-          ...this.additionalParams,
+        this.$inertia.get(this.route(this.routeName), {
+          page
         });
       }
     },

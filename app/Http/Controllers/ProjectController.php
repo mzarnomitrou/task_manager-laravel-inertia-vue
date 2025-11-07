@@ -30,7 +30,7 @@ class ProjectController extends Controller
             },
             ])
             ->where('owner_id', Auth::id())
-            ->paginate(10);
+            ->paginate(5);
 
         //Add Resource so it returns only selected fields
 
