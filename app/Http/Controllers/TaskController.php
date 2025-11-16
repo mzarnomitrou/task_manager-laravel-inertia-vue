@@ -6,10 +6,12 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Http\Resources\UserResource;
+use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Policies\TaskPolicy;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
@@ -31,7 +33,8 @@ class TaskController extends Controller
     {
         $validated = $request->validated();
         $task=Task::create($validated);
-        return redirect()->route('projects.show', $task->project_id);
+        return Inertia::location(route('projects.show', $task->project_id));
+
     }
 
     
@@ -51,7 +54,7 @@ class TaskController extends Controller
             Gate::authorize('update', $task);
             $validated= $request->validated();
             $task->update($validated);
-            return redirect()->route('projects.show', $task->project_id);
+            return Inertia::location(route('projects.show', $task->project_id));
 
 
     }
@@ -61,6 +64,6 @@ class TaskController extends Controller
     {   
         Gate::authorize('delete', $task);
         $task->delete();
-        return redirect()->route('projects.show', $task->project_id);
+        return Inertia::location(route('projects.show', $task->project_id));
     }
 }

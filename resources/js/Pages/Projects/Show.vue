@@ -19,9 +19,6 @@ defineProps({
         default: () => []
     },
     statusList: Object,
-    projectId: {
-        type: String,
-    }
     
 });
 
@@ -74,7 +71,6 @@ function deleteTask(task) {
         Inertia.delete(route('tasks.destroy', task), {
           onSuccess: (response) => {
               //router.reload({ only:['tasks']});
-              console.log('hey');
               this.tasks = this.tasks.filter(t => t.id !== task.id);
           },
           onError: (error) => {
@@ -102,18 +98,16 @@ function deleteTask(task) {
 
         <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            
             <p>{{ project.description }}</p>
             <TaskTable :tasks="tasks.data"
                 :meta="tasks.meta"
+                :project="project"
                 @add="openTaskForm()" 
                 @edit="editTask" 
                 @delete="deleteTask" >
             </TaskTable>
 
             
-
-
         <!-- TaskForm Modal -->
         <div v-if="showFormModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-8 w-96 relative">

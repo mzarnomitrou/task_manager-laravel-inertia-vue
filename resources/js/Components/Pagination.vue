@@ -1,5 +1,6 @@
 <template>
   <div v-if="meta" class="pagination">
+    
     <button 
       @click="goToPage(meta.current_page - 1)" 
       :disabled="meta.current_page === 1"
@@ -35,9 +36,7 @@ export default {
   methods: {
     goToPage(page) {
       if (page > 0 && page <= this.meta.last_page) {
-        this.$inertia.get(this.route(this.routeName), {
-          page
-        });
+        this.$inertia.get(this.route(this.routeName, this.routeParams), {page});
       }
     },
   },

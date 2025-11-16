@@ -61,7 +61,7 @@ class ProjectController extends Controller
             ->with('assignee:id,name')
             ->orderBy('created_at', 'desc')
             ->paginate(20);
-
+        
         return Inertia::render('Projects/Show', [
             'project'=>$project,
             'tasks' => TaskResource::collection($tasks)->response()->getData(true),
